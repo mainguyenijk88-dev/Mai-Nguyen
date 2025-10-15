@@ -1,0 +1,13 @@
+div{
+background-color: rgb(241, 237, 237);
+text-align: center;
+}
+button{
+    background-color: antiquewhite;
+}
+h1{
+    color: blue;
+}
+
+button:active {background-color: green;
+    color: white;}
