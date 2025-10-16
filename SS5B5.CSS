@@ -1,0 +1,82 @@
+
+.box{
+    width: 200px;
+    height: 150px;
+ background-color:grey ;
+  text-align: center;
+  line-height: 150px;
+  transition: all 0.3s ease; 
+}
+.box:hover { 
+    background-color: aquamarine;
+
+}
+
+
+.box1 {
+    width: 200px;
+    height: 150px;
+ background-color: pink;
+ text-align: center;
+  line-height: 150px;
+  transition: all 0.3s ease; 
+}
+.box1:hover{
+   background-color:yellow
+}
+
+.box2 {
+    width: 200px;
+    height: 150px;
+    background-color: blueviolet;
+    text-align: center;
+    line-height:150px ;
+    transition: all 0.3 ease;
+   
+    
+}
+.box2:hover {
+    background-color: brown;
+     transform: scale(1.5) ;
+}
+.box3
+{   width: 200px;
+    height: 150px;
+    background-color: rgb(215, 211, 219);
+    text-align: center;
+    line-height:150px ;
+    transition: all 0.3 ease;
+
+
+}
+.box3:hover{
+    background-color: gray;
+     transform: scale(0.7);
+}
+.box4
+{
+    width: 200px;
+    height: 150px;
+    background-color: rgb(215, 211, 219);
+    text-align: center;
+    line-height:150px ;
+    
+}
+
+.box4:hover {
+     transform: rotate(45deg);
+}
+
+.box5
+{
+    width: 200px;
+    height: 150px;
+    background-color: rgb(156, 120, 192);
+    text-align: center;
+    line-height:150px ;
+    transition: border-radius 2s;
+}
+
+.box5:hover {
+     border-radius: 50%;
+}
