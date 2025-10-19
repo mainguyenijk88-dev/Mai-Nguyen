@@ -1,0 +1,40 @@
+
+*{ 
+    margin: 0;
+padding: 0; box-sizing: border-box;
+}
+
+div  {
+   background-color:blue ;
+    color: aliceblue;
+    text-align: center; 
+    line-height: 50px;
+}
+
+nav a {
+
+    padding: 10px;
+   color: aliceblue; 
+    text-decoration: none;
+}
+
+p {
+    text-align: center;}
+
+
+img{
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+h5{
+    background-color: antiquewhite;
+    text-align: center;
+    counter-reset: white;
+    margin: 1px;
+    padding: 20px;
+}
+
