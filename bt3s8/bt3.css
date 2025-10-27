@@ -1,0 +1,43 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.child{
+    background-color: brown;
+    text-align:left;
+    line-height: 60px;
+    padding-left: 10px;
+   
+}
+.infomation1{
+    width: 50%;
+}
+.infomation2{
+    width: 50%;
+}
+.infomation3{
+    width: 50%;
+}
+.infomation4{
+    width: 50%;
+}
+@media screen and (max-width: 480px) {
+ .infomation1{
+    width: 100%;
+}
+.infomation2{
+    width: 100%;
+}
+.infomation3{
+    width: 100%;
+}   
+.infomation4{
+    width: 100%;
+}
