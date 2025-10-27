@@ -1,0 +1,38 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+   display: flex;
+    flex-wrap: wrap;
+
+    
+}
+.child{
+    background-color: aquamarine;
+    text-align: center;
+   line-height: 50px; 
+   border: 1px solid yellow;
+
+}
+.khoi1{
+    width: 50%;
+
+}
+.khoi2{
+    width: 50%;
+
+}
+.khoi3{
+    width: 100%;
+
+}
+@media screen and (max-width: 480px) {
+   .khoi1{ width: 100%; }  
+   .khoi2{ width: 100%; }  
+   .khoi3{ width: 100%; }  
+    
+}
