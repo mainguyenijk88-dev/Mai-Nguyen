@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: green;
+
+        }
+
+        #container {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #sqRed {
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+
+        }
+
+        #sqGreen {
+            background-color: green;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+
+        }
+
+        #sqGray {
+            background-color: gray;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Change Background Color</h1>
+
+    <div id="container">
+        <div id="sqRed"></div>
+        <div id="sqGreen"></div>
+        <div id="sqGray"></div>
+    </div>
+</body>
+<script>
+    const sqRed = document.getElementById("sqRed");
+    const sqGreen = document.getElementById("sqGreen");
+    const sqGray = document.getElementById("sqGray");
+
+    sqRed.addEventListener("mouseover", () => {
+        document.body.style.backgroundColor = "red";
+    });
+
+    sqRed.addEventListener("mouseout", () => {
+        document.body.style.backgroundColor = "green";
+    });
+
+    sqGreen.addEventListener("mouseover", () => {
+        document.body.style.backgroundColor = "green";
+    });
+
+    sqGreen.addEventListener("mouseout", () => {
+        document.body.style.backgroundColor = "green";
+    });
+
+    sqGray.addEventListener("mouseover", () => {
+        document.body.style.backgroundColor = "gray";
+    });
+
+    sqGray.addEventListener("mouseout", () => {
+        document.body.style.backgroundColor = "green";
+    });
+
+
+</script>
+
+</html>

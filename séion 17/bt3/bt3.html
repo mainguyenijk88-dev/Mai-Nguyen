@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+    }
+    /* tao nen mau xam cho body */
+    #modal {
+    background-color: rgba(127, 157, 168, 0.2);
+    position:absolute ;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+    
+ /* tao css cho khung mau trang */
+#content{
+    background-color: aliceblue;
+    height: 100px;
+    width: 500px;
+    padding-left: 20px;
+    line-height: 40px;
+    border-radius: 4px;
+    border:1px solid black;
+    
+#close{
+ padding-left: 450px;
+ 
+}
+#close:hover{
+    cursor: pointer;
+}
+
+    
+
+/* css cho body */
+body{
+    position: relative;
+}
+
+</style>
+</head>
+<body>
+    
+    <h1 id="title">Modal Example</h1>
+    <button id="oppenModal"> Open Modal </button>
+   <div id="modal">
+    <div id="content">
+        <p id="close">X</p>
+        <p>Some text in the Modal</p>
+        
+    </div>
+    </div>
+</body>
+
+<script>
+    // gan gia tri cho phan tu html
+const oppenModal= document.getElementById("oppenModal");
+console.log(oppenModal);
+
+const modal = document.getElementById("modal");
+const content = document.getElementById("content");
+const close = document.getElementById("close")
+//  gan su kien cho button oppenModal
+    oppenModal.addEventListener("click",()=> {
+    modal.style.display= "flex";
+})
+
+close.addEventListener("click", ()=>{
+    content.style.display= "none";
+})
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        /* css cho parent */
+        body{
+            background-color: green;
+        }
+        #change{
+          font-size: 50px;
+          margin-top: 50px;
+            text-align: center;
+        }
+        #mouseOver{
+            padding-left: 250px;
+            margin-top: 50px;
+            font-size: 30px;
+        }
+        #parent{
+            margin-left: 50px;
+            margin-top: 50px;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        #sqRed{
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+
+        }
+        #sqYellow{
+            background-color: yellow;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+
+        }
+        #sqPink{
+            background-color: pink;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+
+        }
+    </style>
+</head>
+<body id="body">
+ <div id="head">
+    <h1 id="change">Change background color</h1>
+    <p id="mouseOver">mouse over the square</p>
+    </div>
+    <div id="parent">
+    <div id="sqRed" ></div>
+    <div id="sqYellow" ></div>
+    <div id="sqPink" ></div>
+ </div>   
+</body>
+<script>
+    const squareRed = document.getElementById("sqRed");
+    const squareYellow= document.getElementById("sqYellow");
+    const squarePink = document.getElementById("sqPink");
+    const tagBody = document.getElementById("body")
+
+    squareRed.addEventListener("mouseover",() => {
+        tagBody.style.backgroundColor="red";
+            })
+    squareRed.addEventListener("mouseout",() => {
+        tagBody.style.backgroundColor="green";
+            })
+
+    squareYellow.addEventListener("mouseover", ()=>{
+        tagBody.style.backgroundColor="yellow";
+    })
+    squareYellow.addEventListener("mouseout", ()=>{
+        tagBody.style.backgroundColor="green";
+    })
+    squarePink.addEventListener("mouseover", ()=> {
+        tagBody.style.backgroundColor="pink";
+    })
+    squarePink.addEventListener("mouseout", ()=> {
+        tagBody.style.backgroundColor="green";
+    })
+</script>
+</html>
