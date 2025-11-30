@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #addStudent {
+            width: 200px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .btnAction {
+            width: 60px;
+            height: 40px;
+            background-color: red;
+        }
+
+        .input {
+            width: 200px;
+            height: 30px;
+            border-radius: 6px;
+        }
+
+        table,
+        td,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+
+        }
+
+        td,
+        th {
+            width: 200px;
+        }
+
+        table {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quản Lý Danh Sách Sinh Viên</h1>
+
+    <div style="display: flex;gap: 20px; margin-bottom: 50px; align-items: center;">
+        <input class="input" type="text" placeholder="Tên sinh viên" id="name">
+        <input class="input" type="text" placeholder="Tuổi" id="age">
+    </div>
+
+    <div style="display: flex;gap: 20px;margin-bottom: 50px;align-items: center;">
+        <input class="input" type="text" placeholder="Lớp" id="class">
+        <button id="addStudent">Thêm sinh viên</button>
+    </div>
+
+    <input class="input" type="text" placeholder="Tìm kiếm sinh viên" id="search">
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Lớp</th>
+            <th>Hành động</th>
+        </tr>
+
+        <tbody id="listStudent">
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+    const students = [];
+    let currentId = 1;
+    const name = document.getElementById("name");
+    const age = document.getElementById("age");
+    const className = document.getElementById("class");
+    const addStudent = document.getElementById("addStudent");
+    const listStudent = document.getElementById("listStudent");
+
+     function updateStudent(name, age, className) {
+        name.value = name;
+        age.value = age;
+        className.value = className;
+
+    }
+    // Hàm in ra danh sách sinh viên
+    function renderStudent() {
+        listStudent.innerHTML = "";
+        for (let i = 0; i < students.length; i++) {
+            listStudent.innerHTML += `
+            <tr>
+                <td>${students[i].id}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].age}</td>
+                <td>${students[i].className}</td>
+                <td style="display: flex;justify-content: center;align-items: center;gap: 20px;">
+                    <button class="btnAction btnUpdate" idStudent="${students[i].id}">Sửa</button>
+                    <button class="btnAction">Xóa</button>
+                </td>
+            </tr>
+        `
+        };
+
+        // const listBtnUpdate = document.getElementsByClassName("btnUpdate");
+        // for(let i = 0 ; i < listBtnUpdate.length ;i++){
+        //     let id = listBtnUpdate[i].getAttribute("idStudent");
+        //     let studentUpdate = students.find(s => s.id == id);
+        //     if(studentUpdate){
+        //         listBtnUpdate[i].addEventListener("click",() => {
+        //             name.value = studentUpdate.name
+        //         })
+        //     }
+            
+        // }
+    }
+
+   
+    // gọi lại hàm để hiển thị danh sách sinh viên
+    
+
+    // Hàm xử lý khi nhấn nút thêm mới sinh viên
+    addStudent.addEventListener("click", () => {
+        const nameValue = name.value;
+        const ageValue = age.value;
+        const classNameValue = className.value;
+        if (nameValue == "" || ageValue == "" || classNameValue == "") {
+            alert("Vui lòng nhập đủ các thông tin sinh viên");
+        } else {
+            const newStudent = {
+                id: currentId,
+                name: nameValue,
+                age: ageValue,
+                className: classNameValue
+            };
+            students.push(newStudent);
+            currentId++;
+
+            // reset lại giá trị các thẻ input về rỗng
+            name.value = "";
+            age.value = "";
+            className.value = "";
+
+            // gọi lại hàm để hiển thị ra danh sách sinh viên mới nhất sau khi thêm mới 1 sinh viên
+            renderStudent();
+        }
+    })
+
+</script>
+
+</html>

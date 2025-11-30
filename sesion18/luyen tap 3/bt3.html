@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Danh sách việc cần làm 5 nam toi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #ff4757;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-bar {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: calc(100% - 70px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            margin-left: 10px;
+            background-color: #34ace0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #task-list {
+            list-style-type: none;
+            padding: 20px;
+            margin: 0;
+
+        }
+
+        .task-list li {
+            margin: 10px 0;
+        }
+
+        .checked::before {
+            content: "✔";
+            color: green;
+            margin-right: 20px;
+        }
+
+        .unChecked {
+            margin-left: 33px;
+        }
+
+        .task:hover {
+            cursor: pointer;
+        }
+
+        #update {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Danh sách những việc cần làm trong năm</h1>
+            <div class="search-bar">
+                <input type="text" id="title" placeholder="Tìm kiếm...">
+                <button id="add">Thêm</button>
+
+            </div>
+        </header>
+        <ul id="task-list">
+
+        </ul>
+
+
+    </div>
+</body>
+<script>
+    let currentId = 7;
+    const taskList = document.getElementById("task-list");
+    const btnAdd = document.getElementById("add");
+    const title = document.getElementById("title");
+    let tasks = [
+        {
+            id: 1,
+            taskName: "Hoc IT",
+            complete: false
+        },
+        {
+            id: 2,
+            taskName: "Hoc tieng Anh",
+            complete: true
+        },
+        {
+            id: 3,
+            taskName: "hoc tieng Trung",
+            complete: false
+        },
+        {
+            id: 4,
+            taskName: "dao gieng",
+            complete: false
+        },
+        {
+            id: 5,
+            taskName: "hoc tieng Phap",
+            complete: false
+        },
+        {
+            id: 6,
+            taskName: "xin viec nganh It",
+            complete: false
+        },
+        {
+             id: 7,
+            taskName: "mua nha Container",
+            complete: false
+        }
+
+    ]
+
+    // tạo hàm render ra các công việc
+    function renderTask() {
+        // reset lại các phần tử con bên trong
+        taskList.innerHTML = "";
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].complete) {
+                taskList.innerHTML += `<li class=" task checked" valueId="${tasks[i].id}"><del>${tasks[i].taskName}</del></li>`
+            } else {
+                taskList.innerHTML += `<li class=" task unChecked" valueId="${tasks[i].id}">${tasks[i].taskName}</li>`
+            }
+
+        }
+
+        const listTagLi = document.getElementsByClassName("task");
+        for (let i = 0; i < listTagLi.length; i++) {
+            listTagLi[i].addEventListener("click", () => {
+                let idTask = listTagLi[i].getAttribute("valueId");
+                tasks = tasks.map((t) => {
+                    if (t.id == idTask) {
+                        t.complete = !t.complete;
+                        return t;
+                    } else {
+                        return t;
+                    }
+                });
+                renderTask();
+            })
+        }
+    }
+
+    // gọi lại hàm để hiển thị danh sách các công việc
+    renderTask();
+
+
+    // gắn sự kiện cho button thêm mới công việc
+    btnAdd.addEventListener("click", () => {
+        const titleValue = title.value;
+        // kiểm tra xem title công việc có trống ?
+        if (titleValue == "") {
+            alert("Vui lòng ko nhập trống");
+        } else {
+            // tạo đối tượng công việc mới
+            const newTask = {
+                id: currentId++,
+                taskName: titleValue,
+                complete: false
+            };
+            // thêm công việc mới vào mảng công việc
+            tasks.push(newTask);
+            title.value = "";
+            alert("Thêm mới công việc thành công !");
+
+            // gọi lại hàm để hiển thị danh sách công việc đc cập nhật mới nhất
+            renderTask();
+        }
+
+
+    })
+</script>
+
+</html>

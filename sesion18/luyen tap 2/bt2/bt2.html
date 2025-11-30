@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            margin: 20px;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="listCourse">
+
+    </div>
+
+    <button id="btn">Hiển thị menu</button>
+</body>
+
+<script>
+    let currentId = 6;
+    let courses = [
+        {
+            id: 1,
+            courseName: "HTML",
+            complete: false
+        },
+        {
+            id: 2,
+            courseName: "CSS",
+            complete: false
+        },
+        {
+            id: 3,
+            courseName: "Basic of JavaScript",
+            complete: false
+        },
+        {
+            id: 4,
+            courseName: "Node Package Manager",
+            complete: false
+        },
+        {
+            id: 5,
+            courseName: "Git",
+            complete: false
+        },
+    ];
+    const listCourse = document.getElementById("listCourse");
+    const btn = document.getElementById("btn");
+
+    function displayCourse() {
+        listCourse.innerHTML = "";
+        for (let i = 0; i < courses.length; i++) {
+            listCourse.innerHTML += `<div class="item">
+            <p>${i + 1}.${courses[i].courseName}</p>
+            <p>complete : ${courses[i].complete}</p>
+        </div>`
+        }
+
+    }
+
+
+
+    function displayMenu() {
+
+        let choice = prompt("Nhập lựa chọn : C | R | U | D | E ");
+        console.log(choice);
+
+        switch (choice) {
+            case 'C': {
+                let courseName = prompt("Nhập tên khóa học ");
+                let complete = prompt("Nhập trạng thái (true | false)");
+                let newCourse = {
+                    id: currentId,
+                    courseName: courseName,
+                    complete: complete
+                };
+                currentId++;
+                courses.push(newCourse);
+                displayCourse();
+                break
+            }
+            case "R": {
+                displayCourse();
+                break;
+            }
+            case "U": {
+                let courseNameUpdate = prompt("Nhập tên khóa học muốn update");
+                for (let i = 0; i < courses.length; i++) {
+                    if (courses[i].courseName == courseNameUpdate) {
+                        let newCourseName = prompt("Nhạp tên khóa học mới(enter để nếu không muốn thay đổi) ");
+                        let newComplete = prompt("Nhập vào trạng thái mới (enter để nếu không muốn thay đổi)");
+                        if (newCourseName != "") {
+                            courses[i].courseName = newCourseName;
+                        }
+
+                        if (newComplete != "") {
+                            courses[i].complete = newComplete;
+                        }
+                        alert("Cập nhật thành công");
+                    }
+                }
+            }
+
+            case "D": {
+                let indexDelete = parseInt(prompt("Nhập vị trí muốn xóa"));
+                if (indexDelete < 1 || indexDelete > courses.length) {
+                    alert("Vị trí không đúng");
+                } else {
+
+                    courses = courses.filter((course, index) => {
+                        if (index + 1 === indexDelete) {
+                            return null;
+                        } else {
+                            return course;
+                        }
+                    });
+                    displayCourse();
+                    alert("Xóa thành công");
+                }
+                break;
+            }
+            default: {
+                alert("Lựa chọn không đúng ");
+                break;
+            }
+
+        }
+
+    }
+
+    btn.addEventListener("click", () => {
+        displayMenu();
+    })
+</script>
+
+</html>
