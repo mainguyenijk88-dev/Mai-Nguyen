@@ -1,0 +1,152 @@
+Thực hiện tạo một ứng dụng quản lý đầu việc
+Giao diện phải giống giao diện dưới đây
+Phải đầy đủ các tính năng Create-Read-Update-Delete
+Mỗi khi thực hiện xong một chức năng, dữ liệu về các đầu việc sẽ được chỉnh sửa và lưu trữ lại vào trong Local Storage
+Tham khảo dữ liệu của các đầu việc trong mảng sau
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+
+    #addCourse {
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #007bff;
+        color: white;
+        margin: 20px;
+    }
+
+    #form {
+        /* display: none; */
+        margin: 20px;
+    }
+</style>
+
+<body>
+    <h1>DANH SÁCH KHÓA HỌC</h1>
+    <!-- <button id="addCourse">Thêm mới khóa học</button> -->
+
+    <div id="form">
+        <input type="text" id="content" placeholder="Nhập content">
+        <input type="date" id="dueDate">
+        <select name="status" id="status">
+            <option value="pending">Pending</option>
+            <option value="success">Success</option>
+            <option value="cancel">Cancel</option>
+        </select>
+
+        <input type="text" id="assignedTo" placeholder="AssignedTo">
+
+        <button id="btnAdd">Thêm</button>
+    </div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Content</th>
+            <th>DueDate</th>
+            <th>Status</th>
+            <th>AssignedTo</th>
+            <th>Action</th>
+        </tr>
+
+        <tbody id="listCourse">
+
+        </tbody>
+    </table>
+
+
+</body>
+<script>
+    let currentId = 4;
+    const content = document.getElementById("content");
+    const dueDate = document.getElementById("dueDate");
+    const status = document.getElementById("status");
+    const assignedTo = document.getElementById("assignedTo");
+    const btnAdd = document.getElementById("btnAdd");
+
+
+    const courses = [
+        {
+            id: 1,
+            content: "Java",
+            dueDate: "05-12-2025",
+            status: "Pending",
+            assignedTo: "Nguyen Van A"
+        },
+        {
+            id: 2,
+            content: "JavaScript",
+            dueDate: "04-12-2025",
+            status: "Pending",
+            assignedTo: "Nguyen Van B"
+        },
+        {
+            id: 3,
+            content: "Cơ sở dữ liệu",
+            dueDate: "06-12-2025",
+            status: "Pending",
+            assignedTo: "Nguyen Van C"
+        }
+    ]
+    const listCourse = document.getElementById("listCourse");
+
+    function renderData() {
+        listCourse.innerHTML = "";
+
+        for (let i = 0; i < courses.length; i++) {
+            listCourse.innerHTML += `
+            <tr>
+                <td>${courses[i].id}</td>
+                <td>${courses[i].content}</td>
+                <td>${courses[i].dueDate}</td>
+                <td>${courses[i].status}</td>
+                <td>${courses[i].assignedTo}</td>
+                <td>
+                    <button>Sửa</button>
+                    <button>Xóa</button>
+                </td>
+            </tr>
+            `
+        }
+    }
+    renderData();
+
+    btnAdd.addEventListener("click", () => {
+        const contentValue = content.value;
+        const dueDateValue = dueDate.value;
+        const statusValue = status.value;
+        const assignedToValue = assignedTo.value;
+        const newCourse = {
+            id: currentId++,
+            content: contentValue,
+            dueDate: dueDateValue,
+            status: statusValue,
+            assignedTo: assignedToValue
+        };
+        courses.push(newCourse);
+        renderData();
+
+        //reset lại các ô input
+        content.value = "";
+        dueDate.value = "";
+        assignedTo.value = "";
+        alert("Thêm mới thành công");
+    })
+</script>
+
+</html>

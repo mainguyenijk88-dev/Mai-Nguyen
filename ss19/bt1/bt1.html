@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin-left: 50px;
+    }
+    #Register {
+      background-color: brown;
+      color: aliceblue;
+      width: 200px;
+      margin-left: 50px;
+      text-align: center;
+      border-radius: 5px;
+      line-height: 30px;
+    }
+    label {
+      top: 200px;
+      margin-left: 50px;
+    }
+  </style>
+  <body>
+    <h1>Register</h1>
+    <br />
+    <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="Enter your email address" />
+    <br />
+    <br />
+
+    <label for="password">Password :</label>
+    <input id="password" type="text" placeholder="Enter your password" />
+    <br />
+    <br />
+    <label for="confirm-password">Confirm password:</label>
+    <input id="confirm-password" placeholder="Enter your confirm password" />
+    <br />
+    <br />
+    <button id="Register">Register</button>
+  </body>
+  <script>
+    const inputEmail = document.getElementById("email");
+    const inputPassword = document.getElementById("password");
+    const inputConfirm = document.getElementById("confirm-password");
+    const buttonRegister = document.getElementById("Register");
+
+    buttonRegister.addEventListener("click", function () {
+      let isvalid = true;
+
+      if (inputEmail.value === "") {
+        isvalid = false;
+        alert("email ko dc bo trong!");
+      }
+      if (inputPassword.value === "") {
+        isvalid = false;
+        alert("password ko dc bo trong!");
+      }
+      if (inputConfirm === "") {
+        isvalid = false;
+        alert("Confirm password ko dc bo trong!");
+      }
+      if (inputPassword.value != inputConfirm.value) {
+        isvalid = false;
+        alert("nhap lai mat khau ko dung");
+      }
+      if (isvalid === true) {
+        const newAccount = {
+          email: inputEmail.value,
+          password: inputPassword.value,
+        }; // tao bien de luu vao local storage
+        localStorage.setItem("newAccount", JSON.stringify(newAccount)); //chuyen doi sang du lieu chien thi chi tiet
+        alert("Đăng ký thành công ");
+      }
+    });
+  </script>
+</html>
